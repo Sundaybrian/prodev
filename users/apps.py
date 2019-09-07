@@ -6,4 +6,4 @@ class UsersConfig(AppConfig):
 
     def ready(self):
         print('signal is ready priest')
-        import users.signals
+        # import users.signals

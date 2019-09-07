@@ -9,7 +9,7 @@ class Profile(models.Model):
     '''
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     bio=models.TextField(max_length=140,blank=True)
-    profile_photo=models.ImageField(upload_to='profile_pics',default='default_profile.png')
+    profile_photo=models.ImageField(upload_to='profile_pics',default='default_profile.png',blank=True)
     
     def __str__(self):
         return f'{self.user.username}-Profile'
@@ -28,6 +28,6 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.profile_photo.path) 
 
-            
+
 
 
