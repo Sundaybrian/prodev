@@ -20,7 +20,7 @@
         </div>
         <img src="{{site.image.url}}"  class="card-img-top" alt="">
         <div class="card-body">
-            <h5>{{site.title}}</h5>
+            <h5><a href="{% url 'post-detail' site.id %}">{{site.title}}</a> </h5>
             <p class="card-text">{{site.description}}</p>
             <a href="{{site.link}}" target="_blank">Visit Website</a>
         </div>
