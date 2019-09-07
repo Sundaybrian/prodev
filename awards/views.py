@@ -36,4 +36,11 @@ class PostCreateView(CreateView):
     model=Post
     fields=['title','description','link','image'] 
     template_name='awards/post-new.html'  
+
+    def form_valid(self,form):
+        '''
+            setting up the user instance to the form being submitted so it doesnt raise the intergrity error
+        '''
+        form.instance.author=self.request.user
+        return super().form_valid(form)
     
