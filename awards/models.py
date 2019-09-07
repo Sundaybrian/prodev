@@ -28,6 +28,13 @@ class Post(models.Model):
         '''
         self.save()
 
+    def get_posts(self):
+        '''
+            method to fetch all posts
+        '''
+        posts=Post.objects.all()
+        return posts    
+
 
 
 
