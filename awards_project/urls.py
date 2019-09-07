@@ -19,10 +19,12 @@ from django.urls import path,include
 # setting for the images path
 from django.conf import settings
 from django.conf.urls.static import static
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('awards.urls')),
+    path('accounts/register/',user_views.register,name='register'),
 ]
 
 
