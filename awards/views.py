@@ -32,10 +32,13 @@ class PostCreateView(CreateView):
         using class based view to create a post
         args:CreateView from django.views.generic
 
+        success_url returns you to the homepage after succes creation of a post
+
     ''' 
     model=Post
     fields=['title','description','link','image'] 
     template_name='awards/post-new.html'  
+    success_url='/'
 
     def form_valid(self,form):
         '''

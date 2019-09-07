@@ -6,6 +6,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 
 
+# 
+from django.urls import reverse
+
+
 # Create your models here.
 
 class Post(models.Model):
@@ -21,6 +25,14 @@ class Post(models.Model):
     
     def __str__(self):
         return f'Post{self.title}--{self.description}--{self.author.username}'
+
+    # def get_absolute_url(self):
+    #     '''
+    #         return full path of a url
+    #     '''    
+    #     return reverse('post-detail',kwargs={'pk':self.pk}) 
+
+
 
     def save_post(self):
         '''
