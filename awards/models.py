@@ -20,4 +20,12 @@ class Post(models.Model):
     
     def __str__(self):
         return f'Post{self.title}--{self.description}--{self.author.username}'
+
+    def save_post(self):
+        '''
+        method to save a post
+        '''
+        self.save()
         
+
+
