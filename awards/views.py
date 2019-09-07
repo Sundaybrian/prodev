@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
 
-# Create your views here.
-# dummy data
+# using django generic views
+from django.views.generic import (CreateView,DeleteView,UpdateView)
 
+
+# Create your views here.
 def home(request):
     context={
         'sites':Post.get_posts()
@@ -23,3 +25,14 @@ def postDetail(request,pk):
     }
 
     return render(request,'awards/post-detail.html',context)
+
+
+def PostCreateView(CreateView):
+    '''
+        using class based view to create a post
+        args:CreateView from django.views.generic
+
+    ''' 
+    model=Post
+    fields=['title','description','link','image'] 
+      
