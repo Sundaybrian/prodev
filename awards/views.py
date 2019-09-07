@@ -48,4 +48,25 @@ class PostCreateView(LoginRequiredMixin,CreateView):
         '''
         form.instance.author=self.request.user
         return super().form_valid(form)
+
+
+class PostUpdateView(LoginRequiredMixin,UpdateView):  
+    '''
+        using class based view to create a post
+        args:CreateView from django.views.generic
+
+        success_url returns you to the homepage after succes creation of a post
+
+    ''' 
+    model=Post
+    fields=['title','description','link','image'] 
+    template_name='awards/post-new.html'  
+    success_url='/'
+
+    def form_valid(self,form):
+        '''
+            setting up the user instance to the form being submitted so it doesnt raise the intergrity error
+        '''
+        form.instance.author=self.request.user
+        return super().form_valid(form)      
     
