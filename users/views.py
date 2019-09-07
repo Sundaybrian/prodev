@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from .forms import UserRegistrationForm
 
 
 
@@ -10,7 +11,7 @@ def register(request):
     view function for registering 
     '''
     if request.method=='POST':
-         form=UserCreationForm(request.POST)
+         form=UserRegistrationForm(request.POST)
 
          if form.is_valid():
              form.save()
@@ -19,7 +20,7 @@ def register(request):
              return redirect('awards-home')
 
     else:
-        form=UserCreationForm()
+        form=UserRegistrationForm()
     
     return render(request,'users/registration.html',{'form':form})
 
