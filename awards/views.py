@@ -29,6 +29,8 @@ sites=[
     },
 
 ]
+
+
 def home(request):
     context={
         'sites':Post.objects.all()

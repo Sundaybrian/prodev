@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 
+
 # Create your models here.
 
 class Post(models.Model):
@@ -26,6 +27,17 @@ class Post(models.Model):
         method to save a post
         '''
         self.save()
+
+# class Profile(models.Model):
+#     '''
+#     '''
+#     user=models.OneToOneField(User,on_delete=models.CASCADE)
+#     bio=models.TextField(max_length=140,blank=True)
+#     profile_photo=models.ImageField(upload_to='profile_pics',default='default_profile.png')
+
+
+
+
 
 
 
