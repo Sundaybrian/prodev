@@ -30,8 +30,21 @@ def profile(request):
     '''
     view function for a user profile
     '''
-    usr_form=UserUpdateForm()
-    prof_form=ProfileUpdateForm()
+    if request.method=='POST':
+        # instance=request.user populating the fields with the current user details
+        usr_form=UserUpdateForm(request.POST,instance=request.user)
+        prof_form=ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        
+        if usr_form.is_valid and prof_form.is_valid:
+            usr_form.save()
+            prof_form.save()
+            messages.success(request,f'Your Account Has Been Updated')
+
+            return redirect('profile')
+    else:
+        usr_form=UserUpdateForm(instance=request.user)
+        prof_form=ProfileUpdateForm(instance=request.user.profile)
+
 
     context={
         'usr_form':usr_form,
