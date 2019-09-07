@@ -19,7 +19,7 @@ def postDetail(request,pk):
 
     post=Post.get_post_by_id(pk)
     context={
-        'post':post,
+        'site':post,
     }
 
     return render(request,'awards/post-detail.html',context)
