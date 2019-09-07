@@ -27,7 +27,7 @@ def postDetail(request,pk):
     return render(request,'awards/post-detail.html',context)
 
 
-def PostCreateView(CreateView):
+class PostCreateView(CreateView):
     '''
         using class based view to create a post
         args:CreateView from django.views.generic
@@ -35,4 +35,5 @@ def PostCreateView(CreateView):
     ''' 
     model=Post
     fields=['title','description','link','image'] 
-      
+    template_name='awards/post-new.html'  
+    
