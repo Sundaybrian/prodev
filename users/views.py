@@ -9,4 +9,5 @@ def register(request):
     '''
     form=UserCreationForm()
     return render(request,'users/registration.html',{'form':form})
+    
 
