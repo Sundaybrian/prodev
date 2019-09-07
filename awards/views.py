@@ -50,7 +50,7 @@ class PostCreateView(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
 
 
-class PostUpdateView(LoginRequiredMixin,UpdateView):  
+class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):  
     '''
         using class based view to create a post
         args:CreateView from django.views.generic
@@ -68,5 +68,15 @@ class PostUpdateView(LoginRequiredMixin,UpdateView):
             setting up the user instance to the form being submitted so it doesnt raise the intergrity error
         '''
         form.instance.author=self.request.user
-        return super().form_valid(form)      
+        return super().form_valid(form)   
+
+    def test_func(self):
+        '''
+            grab the current post obj and check if current user is the author of the post
+        '''
+        post=self.get_object()
+
+        if self.request.user==post.author:
+            return True
+        return False           
     
