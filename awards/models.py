@@ -54,6 +54,13 @@ class Post(models.Model):
             method to delete a post
         '''
         img=cls.objects.get(id=post_id).delete()    
+
+    @classmethod
+    def search(cls,search_term):
+        '''
+            method that returns a post based on search query
+        '''
+        post=cls.objects.filter(Q(title__icontains=search_term) |Q(author__username__icontains=search_term))    
             
 
 
