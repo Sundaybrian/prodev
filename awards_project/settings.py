@@ -132,3 +132,4 @@ CRISPY_TEMPLATE_PACK='bootstrap4'
 
 # hijack django redirect to the home page once user is logged in
 LOGIN_REDIRECT_URL='awards-home'
+LOGIN_URL='login'
