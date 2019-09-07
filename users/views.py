@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -30,7 +30,15 @@ def profile(request):
     '''
     view function for a user profile
     '''
-    return render(request,'users/profile.html')
+    usr_form=UserUpdateForm()
+    prof_form=ProfileUpdateForm()
+
+    context={
+        'usr_form':usr_form,
+        'prof_form':prof_form
+    }
+
+    return render(request,'users/profile.html',context)
 
 
 
