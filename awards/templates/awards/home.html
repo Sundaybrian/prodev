@@ -12,15 +12,16 @@
           <div class="post-header">
              <div class="post-data">
                 <h5 class="card-title">
-                    <a href="">{{site.dev}}</a>
+                    <a href="#">By {{site.author.username}}</a>
                   </h5>
                   <small class="text-muted">{{site.date_posted}}</small>
              </div>
           </div>
         </div>
+        <img src="{{site.image.url}}"  class="img-card-top" alt="">
         <div class="card-body">
             <h5>{{site.title}}</h5>
-            <p>{{site.description}}</p>
+            <p class="card-text">{{site.description}}</p>
             <a href="{{site.link}}" target="_blank">Visit Website</a>
         </div>
           
