@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
 
 # Create your views here.
 # dummy data
@@ -30,6 +31,6 @@ sites=[
 ]
 def home(request):
     context={
-        'sites':sites
+        'sites':Post.objects.all()
     }
     return render(request,'awards/home.html',context)

@@ -13,7 +13,7 @@ class Post(models.Model):
     '''
     title=models.CharField(max_length=30)
     description=models.TextField()
-    link=models.CharField()
+    link=models.CharField(max_length=100)
     image=models.ImageField(upload_to='poster/',default='')
     date_posted=models.DateTimeField(auto_now_add=True)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -26,6 +26,6 @@ class Post(models.Model):
         method to save a post
         '''
         self.save()
-        
+
 
 
