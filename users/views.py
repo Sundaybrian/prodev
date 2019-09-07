@@ -25,3 +25,12 @@ def register(request):
     return render(request,'users/registration.html',{'form':form})
 
 
+
+def Profile(request):
+    '''
+    view function for a user profile
+    '''
+    return render(request,'users/profile.html')
+
+
+
