@@ -17,7 +17,7 @@ def register(request):
              form.save()
              username=form.cleaned_data.get('username')
              messages.success(request,f'Account for {username} created!')
-             return redirect('awards-home')
+             return redirect('login')
 
     else:
         form=UserRegistrationForm()
