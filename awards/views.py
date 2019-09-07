@@ -7,6 +7,19 @@ from .models import Post
 
 def home(request):
     context={
-        'sites':Post.objects.all()
+        'sites':Post.get_posts()
     }
     return render(request,'awards/home.html',context)
+
+
+def postDetail(request,pk):
+    '''
+    view function that leads to a single post
+    '''
+
+    post=Post.get_post_by_id(pk)
+    context={
+        'post':post,
+    }
+
+    return render(request,'awards/post-detail.html',context)
