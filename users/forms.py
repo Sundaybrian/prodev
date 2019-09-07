@@ -23,7 +23,9 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-    class        
+    class Meta:
+        modeel=Profile
+        field=['profile_photo','bio']        
 
 
 
