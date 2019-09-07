@@ -26,11 +26,11 @@ class Post(models.Model):
     def __str__(self):
         return f'Post{self.title}--{self.description}--{self.author.username}'
 
-    # def get_absolute_url(self):
-    #     '''
-    #         return full path of a url
-    #     '''    
-    #     return reverse('post-detail',kwargs={'pk':self.pk}) 
+    def get_absolute_url(self):
+        '''
+            return full path of a url
+        '''    
+        return reverse('post-detail',kwargs={'pk':self.pk}) 
 
 
 

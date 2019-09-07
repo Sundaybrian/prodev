@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegistrationForm,UserUpdateForm,ProfileUpdateForm
@@ -45,11 +46,15 @@ def profile(request):
         usr_form=UserUpdateForm(instance=request.user)
         prof_form=ProfileUpdateForm(instance=request.user.profile)
 
-
+    user=User.objects.get(pk=request.user.id)
+    posts=user.post_set.all()
     context={
         'usr_form':usr_form,
-        'prof_form':prof_form
+        'prof_form':prof_form,
+        'posts':posts
     }
+
+    
 
     return render(request,'users/profile.html',context)
 
