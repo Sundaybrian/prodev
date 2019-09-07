@@ -128,3 +128,7 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
 
 CRISPY_TEMPLATE_PACK='bootstrap4'
+
+
+# hijack django redirect to the home page once user is logged in
+LOGIN_REDIRECT_URL='awards-home'
