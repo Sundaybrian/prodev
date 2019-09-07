@@ -27,7 +27,7 @@
               {% if user.is_authenticated %}
               
               <a href="{% url 'profile' %}" class="nav-item nav-link ml-2"><i class="fa fa-user-o fa-2x">{{user.username}}</i></a>
-              <a href="" class="nav-item nav-link ml-2">
+              <a href="{% url 'post-new'%}" class="nav-item nav-link ml-2">
                   <i class="fa fa-plus-circle fa-2x">Submit Website</i>
               </a>
   

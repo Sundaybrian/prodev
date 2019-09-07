@@ -14,6 +14,12 @@
                     <a href="#">By {{site.author.username}}</a>
                   </h5>
                   <small class="text-muted">{{site.date_posted}}</small>
+                  <div class="post-user-btn">
+                        {% if site.author == user %}
+                        <a href="{% url 'post-update' site.id %}" class="btn btn-sm btn-outline-primary">Update<i class="fa fa-refresh"></i></a>
+                        <a href="{% url 'post-delete' site.id %}" class="btn btn-sm btn-outline-danger">Delete<i class="fa fa-trash"></i></a>
+                        {% endif %}
+                     </div>
              </div>
           </div>
         </div>
