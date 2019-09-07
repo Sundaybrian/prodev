@@ -28,12 +28,26 @@ class Post(models.Model):
         '''
         self.save()
 
-    def get_posts(self):
+    @classmethod
+    def get_posts(cls):
         '''
             method to fetch all posts
         '''
-        posts=Post.objects.all()
-        return posts    
+        posts=cls.objects.order_by('date_posted')
+        return posts   
+
+    @classmethod
+    def get_post_by_id(cls,id):
+        try:
+
+            post=cls.objects.get(id=id)
+        except ObjectDoesNotExist:
+
+            raise Http404()
+            assert False
+            
+        return post    
+            
 
 
 
