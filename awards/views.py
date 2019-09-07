@@ -5,6 +5,8 @@ from .models import Post
 # using django generic views
 from django.views.generic import (CreateView,DeleteView,UpdateView)
 
+#login required mixins to add login required to the class based views
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 # Create your views here.
 def home(request):
@@ -27,7 +29,7 @@ def postDetail(request,pk):
     return render(request,'awards/post-detail.html',context)
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin,CreateView):
     '''
         using class based view to create a post
         args:CreateView from django.views.generic
