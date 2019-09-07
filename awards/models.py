@@ -45,8 +45,15 @@ class Post(models.Model):
 
             raise Http404()
             assert False
-            
+
         return post    
+
+    @classmethod
+    def delete_post(cls,post_id):
+        '''
+            method to delete a post
+        '''
+        img=cls.objects.get(id=post_id).delete()    
             
 
 
