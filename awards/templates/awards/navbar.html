@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-danger sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-secondary sticky-top">
         <a class="navbar-brand ml-auto" href="{% url 'awards-home'%}">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,18 +24,22 @@
           </ul>
 
           <ul class="navbar-nav mr-auto">
-            
-            <a href="" class="nav-item nav-link ml-2"><i class="fa fa-user-o fa-2x">Profile</i></a>
-            <a href="" class="nav-item nav-link ml-2">
-                <i class="fa fa-plus-circle fa-2x">Submit Website</i>
-            </a>
-
-            <a href="{% url 'logout' %}" class="nav-item nav-link"><i class="fa fa-sign-out fa-2x">Sign Out</i></a>
-            
-
-            <a href="{% url 'login' %}" class="nav-item nav-link"><i class="fa fa-sign-in fa-2x">Sign In</i></a>
-            <a href="{% url 'register' %}" class="nav-item nav-link"><i class="fa fa-arrow-circle-o-up fa-2x"> Sign Up</i>
+              {% if user.is_authenticated %}
+              
+              <a href="" class="nav-item nav-link ml-2"><i class="fa fa-user-o fa-2x">{{user.username}}</i></a>
+              <a href="" class="nav-item nav-link ml-2">
+                  <i class="fa fa-plus-circle fa-2x">Submit Website</i>
               </a>
+  
+              <a href="{% url 'logout' %}" class="nav-item nav-link"><i class="fa fa-sign-out fa-2x">Log Out</i></a>
+              
+              {% else %}
+              <a href="{% url 'login' %}" class="nav-item nav-link"><i class="fa fa-sign-in fa-2x">Log In</i></a>
+              
+              <a href="{% url 'register' %}" class="nav-item nav-link"><i class="fa fa-arrow-circle-o-up fa-2x"> Register</i>
+                </a>
+              
+              {% endif %}
             
             
           </ul>
