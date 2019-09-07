@@ -78,5 +78,21 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
 
         if self.request.user==post.author:
             return True
-        return False           
+        return False    
+
+
+class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+    model=Post
+
+    def test_func(self):
+        '''
+            grab the current post obj and check if current user is the author of the post
+        '''
+        post=self.get_object()
+
+        if self.request.user==post.author:
+            return True
+        return False 
+
+
     
