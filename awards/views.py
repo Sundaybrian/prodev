@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import NewReviewForm
 from django.contrib import messages
-from .models import Post
+from .models import Post,Review
 
 # using django generic views
 from django.views.generic import (CreateView,DeleteView,UpdateView,ListView)
@@ -62,6 +62,7 @@ def postDetail(request,pk):
     '''
 
     post=Post.get_post_by_id(pk)
+    reviews=
 
     current_user=request.user
     if request.method=='POST':

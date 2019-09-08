@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from users.models import Profile
 from django.contrib.auth.models import User
+from statistics import mean
 
 
 # 
@@ -105,7 +106,26 @@ class Review(models.Model):
         self.save()
 
     def __str__(self):
-        return f'{self.post.title}:Review-{self.design}-{self.usability}-{self.creativity}-{self.content}-{self.mobile}-{self.judge.username}'    
+        return f'{self.post.title}:Review-{self.design}-{self.usability}-{self.creativity}-{self.content}-{self.mobile}-{self.judge.username}-{self.post.id}'    
+
+    @classmethod
+    def get_all_reviews(cls,post_id):
+        design=round(mean(cls.objects.filter(post_id=post_id).values_list('design',flat=True)))
+        usability=round(mean(cls.objects.filter(post_id=post_id).values_list('usability',flat=True)))
+        creativity=round(mean(cls.objects.filter(post_id=post_id).values_list('creativity',flat=True)))
+        content=round(mean(cls.objects.filter(post_id=post_id).values_list('content',flat=True)))
+        mobile=round(mean(cls.objects.filter(post_id=post_id).values_list('mobile',flat=True)))
+
+        return reviews={
+            'design':design,
+            'usability':usability,
+            'creativity':creativity,
+            'content':content,
+            'mobile':mobile
+        }
+        
+        
+        
 
 
 
