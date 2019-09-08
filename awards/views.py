@@ -30,19 +30,19 @@ class HomeListView(ListView):
     paginate_by=4
 
 
-def UserPostListView(ListView):
+class UserPostListView(ListView):
     '''
         class view to render a single user posts
     '''
     model=Post
-    template_name='awards/user_posts.html'
+    template_name='awards/user-posts.html'
     context_object_name='sites'
     ordering=['-date_posted']
     paginate_by=5
 
     def get_queryset(self):
         '''
-            
+
         '''
         user= get_object_or_404(User,username=self.kwargs.get('username'))
         return Post.get_posts_by_username(user)

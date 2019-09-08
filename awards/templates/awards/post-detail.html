@@ -11,7 +11,7 @@
           <div class="post-header">
              <div class="post-data">
                 <h5 class="card-title">
-                    <a href="#">By {{site.author.username}}</a>
+                    <a href="{% url 'user-posts' site.author.username%}">By {{site.author.username}}</a>
                   </h5>
                   <small class="text-muted">{{site.date_posted}}</small>
                   <div class="post-user-btn">
