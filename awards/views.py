@@ -78,6 +78,7 @@ def postDetail(request,pk):
     post.creativity=reviews['creativity']
     post.content=reviews['content']
     post.mobile=reviews['mobile']
+    post.average_review=reviews['average_review']
 
     post.save()
 

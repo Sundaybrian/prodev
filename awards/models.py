@@ -102,7 +102,8 @@ class Review(models.Model):
     post=models.ForeignKey(Post,on_delete=models.CASCADE)
     judge=models.ForeignKey(User,blank=True,null=True,on_delete=models.CASCADE)
     average_review=models.IntegerField(blank=True,default=0)
-    
+
+
     def save_review(self):
         self.save()
 
@@ -117,13 +118,15 @@ class Review(models.Model):
         creativity=round(mean(cls.objects.filter(post_id=post_id).values_list('creativity',flat=True)))
         content=round(mean(cls.objects.filter(post_id=post_id).values_list('content',flat=True)))
         mobile=round(mean(cls.objects.filter(post_id=post_id).values_list('mobile',flat=True)))
+        average_review=(design+usability+creativity+content+mobile)/5
 
         return  {
             'design':design,
             'usability':usability,
             'creativity':creativity,
             'content':content,
-            'mobile':mobile
+            'mobile':mobile,
+            'average_review':average_review
         }
         
 
