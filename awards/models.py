@@ -31,7 +31,6 @@ class Post(models.Model):
     content=models.IntegerField(blank=True,default=0)
     mobile=models.IntegerField(blank=True,default=0)
     
-    
     def __str__(self):
         return f'Post{self.title}--{self.description}--{self.author.username}'
 
@@ -54,7 +53,7 @@ class Post(models.Model):
         '''
             method to fetch all posts
         '''
-        posts=cls.objects.order_by('date_posted')
+        posts=cls.objects.order_by('-date_posted')
         return posts   
 
     @classmethod

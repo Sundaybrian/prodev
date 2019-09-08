@@ -7,7 +7,7 @@ class AwardsConfig(AppConfig):
     def ready(self):
 
         print('rating signal is ready')
-        # import awards.signals
+        import awards.signals
 
 
 

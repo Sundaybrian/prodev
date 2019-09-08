@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Post,Review
 from django.core.paginator import Paginator
@@ -83,6 +83,8 @@ def postDetail(request,pk):
             
             review.save()
             messages.success(request,f'Review Submitted')
+
+            return redirect('post-detail',pk)
 
     else:
         form=NewReviewForm()  

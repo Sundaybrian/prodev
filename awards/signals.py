@@ -27,11 +27,3 @@ def create_review(sender,instance,created,**kwargs):
     if created:
         Review.objects.create(post=instance)
 
-
-@receiver(post_save,sender=Post)
-def save_review(sender,instance,**kwargs):
-    '''
-    save review once a post is saved
-    '''
-    instance.review.save()
-    
