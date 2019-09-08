@@ -116,7 +116,7 @@ class Review(models.Model):
         content=round(mean(cls.objects.filter(post_id=post_id).values_list('content',flat=True)))
         mobile=round(mean(cls.objects.filter(post_id=post_id).values_list('mobile',flat=True)))
 
-        return reviews={
+        return  {
             'design':design,
             'usability':usability,
             'creativity':creativity,

@@ -62,7 +62,16 @@ def postDetail(request,pk):
     '''
 
     post=Post.get_post_by_id(pk)
-    reviews=
+    reviews=Review.get_all_reviews(pk)
+
+    post.design=reviews['design']
+    post.usability=reviews['usability']
+    post.creativity=reviews['creativity']
+    post.content=reviews['content']
+    post.mobile=reviews['mobile']
+
+    post.save()
+
 
     current_user=request.user
     if request.method=='POST':
@@ -74,6 +83,7 @@ def postDetail(request,pk):
             
             review.save()
             messages.success(request,f'Review Submitted')
+
     else:
         form=NewReviewForm()  
 
