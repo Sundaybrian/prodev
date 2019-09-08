@@ -34,6 +34,7 @@ As a user I would like:
 
 ## Api EndPoint
 If making a local build:
+| ------------- |:-------------:| -----:|
 | Profiles |Navigate to http://localhost:8000/api/profiles/| Json response for all profile data |
 | Posts | Navigate to http://localhost:8000/api/posts/| Json response for all posts data  |
 
