@@ -31,7 +31,11 @@ As a user I would like:
 | Delete a Post | Click Trash Icon| Authenticated user i.e owner of the post is prompted to delete|
 | Update a Post | Click Update Icon| Authenticated user i.e owner of the post is redirected to a form field to update the post|
 | Update profile | Click edit profile | Pop up modal to update your details |
-| Search | type on search field| Redirect to a results page if query exists |
+
+## Api EndPoint
+If making a local build:
+| Profiles |Navigate to http://localhost:8000/api/profiles/| Json response for all profile data |
+| Posts | Navigate to http://localhost:8000/api/posts/| Json response for all posts data  |
 
 
 ## Setup/Installation Requirements
