@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
+from django.core.paginator import Paginator
 
 # using django generic views
 from django.views.generic import (CreateView,DeleteView,UpdateView,ListView)
@@ -24,6 +25,7 @@ class HomeListView(ListView):
     template_name='awards/home.html'
     context_object_name='sites'
     ordering=['-date_posted']
+    paginate_by=4
 
 
 
