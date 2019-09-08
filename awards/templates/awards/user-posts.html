@@ -14,7 +14,7 @@
                 <h5 class="card-title">
                     <a href="{% url 'user-posts' site.author.username%}">By {{site.author.username}}</a>
                   </h5>
-                  <small class="text-muted">{{site.date_posted}}</small>
+                  <small class="">{{site.date_posted}}</small>
              </div>
           </div>
         </div>
@@ -22,7 +22,7 @@
         <div class="card-body">
             <h5><a href="{% url 'post-detail' site.id %}">{{site.title}}</a> </h5>
             <p class="card-text">{{site.description}}</p>
-            <a href="{{site.link}}" class="btn btn-outline-info btn-sm" target="_blank">Visit Website</a>
+            <a href="{{site.link}}" class="btn btn-info btn-sm" target="_blank">Visit Website</a>
         </div>
         <div class="card-footer">
             <ul class="">
