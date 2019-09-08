@@ -22,6 +22,11 @@ class Post(models.Model):
     image=models.ImageField(upload_to='poster/',default='')
     date_posted=models.DateTimeField(auto_now_add=True)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
+    design=models.IntegerField(blank=True,default=0)
+    usability=models.IntegerField(blank=True,default=0)
+    creativity=models.IntegerField(blank=True,default=0)
+    content=models.IntegerField(blank=True,default=0)
+    mobile=mobile.IntegerField(blank=True,default=0)
     
     def __str__(self):
         return f'Post{self.title}--{self.description}--{self.author.username}'
@@ -80,7 +85,13 @@ class Post(models.Model):
             method that returns a post based on search query
         '''
         posts=cls.objects.filter(Q(title__icontains=search_term) |Q(author__username__icontains=search_term))   
-        return posts 
+        return posts
+
+
+class Review(models.Model):
+    '''
+    '''
+
             
 
 

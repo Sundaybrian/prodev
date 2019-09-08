@@ -1,12 +1,13 @@
 {% include 'awards/base.html'%}
 {% block content %}
 <div class="container">
-<div class="row">
-    {% if sites %}
-        <h2 class="text-center">Found {{ sites|length }} of searched term {{message}}</h2>
-    {% else %}
-        <h2 class="text-center"> Found 0 posts for the search term {{message}}</h2>
-    {% endif %}
+    
+    <div class="row">
+        {% if sites %}
+            <h2 class="text-center">Found {{ sites|length }} of searched term {{message}}</h2>
+        {% else %}
+            <h2 class="text-center"> Found 0 posts for the search term {{message}}</h2>
+        {% endif %}
 
     </div>
 
