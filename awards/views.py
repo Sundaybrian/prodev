@@ -3,17 +3,28 @@ from django.http import HttpResponse
 from .models import Post
 
 # using django generic views
-from django.views.generic import (CreateView,DeleteView,UpdateView)
+from django.views.generic import (CreateView,DeleteView,UpdateView,ListView)
 
 #login required mixins to add login required to the class based views
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 # Create your views here.
-def home(request):
-    context={
-        'sites':Post.get_posts()
-    }
-    return render(request,'awards/home.html',context)
+# def home(request):
+#     context={
+#         'sites':Post.get_posts()
+#     }
+#     paginate_by=2
+#     return render(request,'awards/home.html',context)
+
+class HomeListView(ListView):
+    '''
+        refactoring the home view function with a class based view
+    '''
+    model=Post
+    template_name='awards/home.html'
+    context_object_name='sites'
+    ordering=['-date_posted']
+
 
 
 def postDetail(request,pk):
