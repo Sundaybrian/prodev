@@ -7,12 +7,21 @@ from django.contrib.auth.decorators import login_required
 from .forms import NewReviewForm
 from django.contrib import messages
 from .models import Post,Review
+from users.models import Profile
+
 
 # using django generic views
 from django.views.generic import (CreateView,DeleteView,UpdateView,ListView)
 
 #login required mixins to add login required to the class based views
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+
+
+# area api
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import PostSerializer
+from .serializer import ProfileSerializer
 
 
 @login_required
@@ -178,6 +187,15 @@ def search_results(request):
 
         return render(request,'awards/search.html',context)
     else :
-        return render(request,'awards/search.html')            
+        return render(request,'awards/search.html')    
+
+
+class PostList(APIView):
+    def get(self,request,format=None):
+        all_posts=Post.objects.all()
+        serializers=PostSerializer(all_posts,many=True)
+        return Response(serializers.data)
+
+
 
 
