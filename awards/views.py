@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import Post
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
+
 
 # using django generic views
 from django.views.generic import (CreateView,DeleteView,UpdateView,ListView)
@@ -26,6 +28,24 @@ class HomeListView(ListView):
     context_object_name='sites'
     ordering=['-date_posted']
     paginate_by=4
+
+
+def UserPostListView(ListView):
+    '''
+        class view to render a single user posts
+    '''
+    model=Post
+    template_name='awards/user_posts.html'
+    context_object_name='sites'
+    ordering=['-date_posted']
+    paginate_by=5
+
+    def get_queryset(self):
+        '''
+            
+        '''
+        user= get_object_or_404(User,username=self.kwargs.get('username'))
+        return Post.get_posts_by_username(user)
 
 
 
