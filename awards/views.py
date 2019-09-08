@@ -196,6 +196,13 @@ class PostList(APIView):
         serializers=PostSerializer(all_posts,many=True)
         return Response(serializers.data)
 
+class ProfileList(APIView):
+
+    def get(self,request,format=None):
+        all_profiles=Profile.objects.all()
+        serializers=ProfileSerializer(all_profiles,many=True)
+        return Response(serializers.data)        
+
 
 
 
