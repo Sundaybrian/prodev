@@ -31,6 +31,7 @@ class Post(models.Model):
     content=models.IntegerField(blank=True,default=0)
     mobile=models.IntegerField(blank=True,default=0)
     
+    
     def __str__(self):
         return f'Post{self.title}--{self.description}--{self.author.username}'
 
@@ -106,10 +107,11 @@ class Review(models.Model):
         self.save()
 
     def __str__(self):
-        return f'{self.post.title}:Review-{self.design}-{self.usability}-{self.creativity}-{self.content}-{self.mobile}-{self.judge.username}-{self.post.id}'    
+        return f'{self.post.title}:Review-{self.design}-{self.usability}-{self.creativity}-{self.content}-{self.mobile}-{self.post.id}'    
 
     @classmethod
     def get_all_reviews(cls,post_id):
+
         design=round(mean(cls.objects.filter(post_id=post_id).values_list('design',flat=True)))
         usability=round(mean(cls.objects.filter(post_id=post_id).values_list('usability',flat=True)))
         creativity=round(mean(cls.objects.filter(post_id=post_id).values_list('creativity',flat=True)))
