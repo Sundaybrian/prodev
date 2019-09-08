@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from .models import Post,Review
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
@@ -22,7 +22,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import PostSerializer
 from .serializer import ProfileSerializer
-
+from rest_framework import status
 
 @login_required
 def home(request):
@@ -195,6 +195,25 @@ class PostList(APIView):
         all_posts=Post.objects.all()
         serializers=PostSerializer(all_posts,many=True)
         return Response(serializers.data)
+
+class PostDescription(APIView):
+    '''
+    Api view to fetch a single post
+    '''        
+
+    def get_post(self,pk):
+        try:
+            return Post.objects.get(pk=pk)
+
+        except Post.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        post = self.get_post(pk)
+        serializers = PostSerializer(post)
+        return Response(serializers.data)        
+   
+
 
 class ProfileList(APIView):
 
