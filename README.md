@@ -27,9 +27,9 @@ As a user I would like:
 | User Log in | Your email : john@doe.com  Password : doe | Logged in |
 | Create Post | Click Add Button |Authenticated User is redirected to a form page to create a new post|
 | View Post | Click on Post title | Redirected to a page that has that single post|
-| Comment on post | Fill the form field provided | Authenticated user is allowed to make a comment|
+| Rate a post | Fill the form field provided | Authenticated user is allowed to make a review|
 | Delete a Post | Click Trash Icon| Authenticated user i.e owner of the post is prompted to delete|
-| Update a Post | Click Update Icon| Authenticated user i.e owner of the post is redireted to a foem field to update the post|
+| Update a Post | Click Update Icon| Authenticated user i.e owner of the post is redirected to a form field to update the post|
 | Update profile | Click edit profile | Pop up modal to update your details |
 | Search | type on search field| Redirect to a results page if query exists |
 

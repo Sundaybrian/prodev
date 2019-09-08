@@ -101,7 +101,8 @@ class Review(models.Model):
     mobile=models.IntegerField(blank=True,default=0)
     post=models.ForeignKey(Post,on_delete=models.CASCADE)
     judge=models.ForeignKey(User,blank=True,null=True,on_delete=models.CASCADE)
-
+    average_review=models.IntegerField(blank=True,default=0)
+    
     def save_review(self):
         self.save()
 

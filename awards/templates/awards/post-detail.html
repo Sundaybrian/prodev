@@ -25,21 +25,24 @@
           </div>
         </div>
         <img src="{{site.image.url}}"  class="card-img-top" alt="">
-        <div class="card-body">
+        <div class="card-body text-center">
             <h5>{{site.title}} </h5>
             <p class="card-text">{{site.description}}</p>
-            <a href="{{site.link}}" class="btn btn-outline-info btn-sm" target="_blank">Visit Website</a>
-            <a class="btn btn-sm btn-outline-secondary" data-toggle='modal' data-target='#reviewModal'>Review</a>
+            <div class="buttons">
+                <a href="{{site.link}}" class="btn btn-outline-info btn-sm" target="_blank">Visit Website</a>
+                <a class="btn btn-sm btn-outline-secondary" data-toggle='modal' data-target='#reviewModal'>Review</a>
+            </div>
         </div>
 
         <div class="card-footer">
-          <ul class="list-group">
-            <li class="list-group item">Design:{{site.design}}</li>
-            <li class="list-group item">Creativity:{{site.creativity}}</li>
-            <li class="list-group item">Usability{{site.usability}}</li>
-            <li class="list-group item">Content:{{site.content}}</li>
-            <li class="list-group item">Mobile:{{site.mobile}}</li>
-          </ul>
+            <ul class="">
+              <li class="">Design:{{site.design}}</li>
+              <li class="">Creativity:{{site.creativity}}</li>
+              <li class="">Usability{{site.usability}}</li>
+              <li class="">Content:{{site.content}}</li>
+              <li class="">Mobile:{{site.mobile}}</li>
+            </ul>
+          
         </div>
           
     </div>
