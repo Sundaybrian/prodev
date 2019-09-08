@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from users.models import Profile
+from django.contrib.auth.models import User
 
 
 # 
@@ -27,7 +28,7 @@ class Post(models.Model):
     usability=models.IntegerField(blank=True,default=0)
     creativity=models.IntegerField(blank=True,default=0)
     content=models.IntegerField(blank=True,default=0)
-    mobile=mobile.IntegerField(blank=True,default=0)
+    mobile=models.IntegerField(blank=True,default=0)
     
     def __str__(self):
         return f'Post{self.title}--{self.description}--{self.author.username}'
@@ -96,9 +97,14 @@ class Review(models.Model):
     usability=models.IntegerField(blank=True,default=0)
     creativity=models.IntegerField(blank=True,default=0)
     content=models.IntegerField(blank=True,default=0)
-    mobile=mobile.IntegerField(blank=True,default=0)
-    post=models.ForeignKey(Project,on_delete=models.CASCADE)
-    profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    mobile=models.IntegerField(blank=True,default=0)
+    post=models.ForeignKey(Post,on_delete=models.CASCADE)
+    judge=models.ForeignKey(User,blank=True,null=True,on_delete=models.CASCADE)
+
+    def save_review(self):
+        self.save()
+
+        
 
             
 
