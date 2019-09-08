@@ -65,8 +65,7 @@ class Post(models.Model):
 
         posts=cls.objects.filter(author=username).order_by('-date_posted')
         return posts
-        
-    
+          
 
     @classmethod
     def delete_post(cls,post_id):
@@ -80,7 +79,8 @@ class Post(models.Model):
         '''
             method that returns a post based on search query
         '''
-        post=cls.objects.filter(Q(title__icontains=search_term) |Q(author__username__icontains=search_term))    
+        posts=cls.objects.filter(Q(title__icontains=search_term) |Q(author__username__icontains=search_term))   
+        return posts 
             
 
 

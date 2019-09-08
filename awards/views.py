@@ -129,4 +129,22 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
         return False 
 
 
+def search_results(request):
+    '''
+    view function that redirects to a search results page
+    '''
+    if 'site' in request.GET and request.GET['site']:
+        search_term=request.GET.get('site')
+        search_posts=Post.search(search_term)
+        message=
+        context={
+            'message':f'{search_term}',
+            'sites':search_posts
+        }
+
+        return render(request,'awards/search.html',context)
+    else :
+        return render(request,'awards/search.html')            
+
+
     
