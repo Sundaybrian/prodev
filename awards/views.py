@@ -1,9 +1,12 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
-from .models import Post
+from .models import Post,Review
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
+from .forms import NewReviewForm
+from django.contrib import messages
+from .models import Post
 
 # using django generic views
 from django.views.generic import (CreateView,DeleteView,UpdateView,ListView)
@@ -11,23 +14,27 @@ from django.views.generic import (CreateView,DeleteView,UpdateView,ListView)
 #login required mixins to add login required to the class based views
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
-# Create your views here.
-# def home(request):
-#     context={
-#         'sites':Post.get_posts()
-#     }
-#     paginate_by=2
-#     return render(request,'awards/home.html',context)
 
-class HomeListView(ListView):
-    '''
-        refactoring the home view function with a class based view
-    '''
-    model=Post
-    template_name='awards/home.html'
-    context_object_name='sites'
-    ordering=['-date_posted']
-    paginate_by=4
+@login_required
+def home(request):
+
+    sites_list=Post.get_posts()
+    paginator = Paginator(sites_list, 5)
+    page = request.GET.get('page')
+    sites = paginator.get_page(page)
+
+    return render(request,'awards/home.html',{'sites':sites})
+
+# class HomeListView(ListView):
+#     '''
+#         refactoring the home view function with a class based view
+#     '''
+#     model=Post
+#     template_name='awards/home.html'
+#     context_object_name='sites'
+#     ordering=['-date_posted']
+#     paginate_by=4
+
 
 
 class UserPostListView(ListView):
@@ -55,8 +62,23 @@ def postDetail(request,pk):
     '''
 
     post=Post.get_post_by_id(pk)
+
+    current_user=request.user
+    if request.method=='POST':
+        form=NewReviewForm(request.POST)
+        if form.is_valid():
+            review=form.save(commit=False)
+            review.judge=current_user
+            review.post=post
+            
+            review.save()
+            messages.success(request,f'Review Submitted')
+    else:
+        form=NewReviewForm()  
+
     context={
         'site':post,
+        'form':form
     }
 
     return render(request,'awards/post-detail.html',context)
@@ -146,4 +168,3 @@ def search_results(request):
         return render(request,'awards/search.html')            
 
 
-    

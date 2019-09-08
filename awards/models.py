@@ -104,7 +104,10 @@ class Review(models.Model):
     def save_review(self):
         self.save()
 
-        
+    def __str__(self):
+        return f'{self.post.title}:Review-{self.design}-{self.usability}-{self.creativity}-{self.content}-{self.mobile}-{self.judge.username}'    
+
+
 
             
 

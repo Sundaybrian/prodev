@@ -1,4 +1,5 @@
 {% include 'awards/base.html'%}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="container">
     
@@ -28,6 +29,7 @@
             <h5>{{site.title}} </h5>
             <p class="card-text">{{site.description}}</p>
             <a href="{{site.link}}" target="_blank">Visit Website</a>
+            <a class="btn btn-sm btn-outline-secondary" data-toggle='modal' data-target='#reviewModal'>Review</a>
         </div>
           
     </div>
@@ -35,6 +37,38 @@
   </div>
   <div class="col-md-2"></div>
 </div>
+
+
+ <!-- modal update form -->
+ <div class="modal" id="reviewModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Review </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <form action="" method='POST' enctype="multipart/form-data">
+                    {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4"></legend>
+                    {{form | crispy}}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- end modal update -->
    
    
 </div>
