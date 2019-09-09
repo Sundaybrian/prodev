@@ -39,6 +39,10 @@ If making a local build:
 * Profiles |Navigate to http://localhost:8000/api/profiles/| Json response for all profile data |
 * Posts | Navigate to http://localhost:8000/api/posts/| Json response for all posts data  |
 
+Else from heroku
+*   https://prodev2.herokuapp.com/api/posts/
+*   https://prodev2.herokuapp.com/api/profiles/
+
 ## Setup/Installation Requirements
 
 * `$ git clone` [prodev](https://github.com/Sundaybrian/prodev)
