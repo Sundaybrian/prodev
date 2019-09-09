@@ -34,7 +34,7 @@ if config('MODE')=="dev":
 # production
 else:
    DATABASES = {
-       'default': dj_database_url.config(default='postgres://user:pass@localhost/dbname')
+       'default': dj_database_url.config(default='postgres://sundaypriest:belter@localhost/prodev2')
    }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -152,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -163,6 +163,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
@@ -180,3 +182,7 @@ CRISPY_TEMPLATE_PACK='bootstrap4'
 # hijack django redirect to the home page once user is logged in
 LOGIN_REDIRECT_URL='awards-home'
 LOGIN_URL='login'
+
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
