@@ -1,11 +1,18 @@
 {% include 'awards/base.html'%}
 {% block content %}
-<div class="container">
-    
+<section id="welcome-section">
+    <div class="caption text-center">
+       <h1>Welcome to ProDev</h1>
+        <h3>The awards of design, creativity <br> and innovation on the internet</h3>
+      </div>
+</section>
+
+
+<div class="container mt-4"> 
 <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-      {% for sites in sites %}
+  <!-- <div class="col-md-2"></div> -->
+  {% for sites in sites %}
+  <div class="col-md-6 col-sm-12">
       <div class="card mb-3">
         <div class="card-header">
           <img src="{{sites.author.profile.profile_photo.url}}" class="rounded-circle" alt="">
@@ -14,15 +21,19 @@
                 <h5 class="card-title">
                     <a href="{% url 'user-posts' sites.author.username%}">By {{sites.author.username}}</a>
                   </h5>
-                  <small class="">{{sites.date_posted}}</small>
+                  <small class="text-muted">{{sites.date_posted}}</small>
              </div>
           </div>
         </div>
         <img src="{{sites.image.url}}"  class="card-img-top" alt="">
-        <div class="card-body">
+        <div class="card-body text-center">
             <h5><a href="{% url 'post-detail' sites.id %}">{{sites.title}}</a> </h5>
             <p class="card-text">{{sites.description}}</p>
-            <a href="{{sites.link}}" class="btn btn-info btn-sm" target="_blank">Visit Website</a>
+            <div class="buttons ">
+                <a href="{{site.link}}" class="btn btn-info btn-sm" target="_blank">Visit Website</a>
+                
+            </div>
+           
     
         </div>
           
@@ -30,11 +41,11 @@
 
    
 
+  </div>
   {% endfor %}
 
 
-  </div>
-  <div class="col-md-2"></div>
+  <!-- <div class="col-md-2"></div> -->
 </div>
 
 <!-- =====================pagination======================================== -->
@@ -50,7 +61,7 @@
         {% if sites.number == num %}
         <a class="btn btn-primary mb-3" href="?page={{ num }}">{{ num }}</a>
         {% elif num > sites.number|add:'-3' and num < sites.number|add:'3' %} 
-        <a class="btn btn-outline-primary mb-3" href="?page={{ num }}">{{ num }}</a>
+        <a class="btn btn-info mb-3" href="?page={{ num }}">{{ num }}</a>
         {% endif %}
           
       {% endfor %}

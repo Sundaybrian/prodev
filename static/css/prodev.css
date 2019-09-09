@@ -11,12 +11,19 @@
 body,
 html {
   /* background:#525f7f!important; */
-  color: floralwhite;
-  background: #050833 !important;
+  background: #fff!important;
+  
 }
 
+.btn.btn-info.btn-sm{
+  background: #e14eca !important;
+  color: #fff !important;
+  border:#e14eca !important;
+}
+
+
 i.fa {
-  color: #000;
+  color: #050833;
 }
 /* ==============navbar==================== */
 .navbar.navbar-expand-md.navbar-light.bg-secondary.sticky-top {
@@ -28,9 +35,8 @@ i.fa {
 }
 
 nav a.navbar-brand {
-  border-right: 2px solid #000;
   padding-right: 14px;
-  color: #fff;
+  color: #050833;
 }
 
 ul.navbar-nav a.nav-item > i.fa {
@@ -44,17 +50,73 @@ ul.navbar-nav a.nav-item.nav-link {
 }
 /* ===============end navbar====================== */
 
+/*********welcome section***************** */
+
+#welcome-section {
+    height: 90vh;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../img/hero-bg.jpg) right bottom no-repeat;
+    background-size: cover;
+    height: 95vh;
+    background-attachment: scroll;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    clip-path: none;
+    margin-bottom: 10px;
+    /* background: white; */
+}
+
+
+.caption {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 38%;
+  z-index: 1;
+  color: white;
+  text-transform: uppercase;
+}
+
+.caption h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: .3rem;
+  text-shadow: .1rem .1rem .8rem black;
+  padding-bottom: 1rem;
+}
+
+.caption h3 {
+  font-size: 1.8rem;
+  text-shadow: .1rem .1rem .5rem black;
+  padding-bottom: 1.6rem;
+}
+
+.btn-lg {
+  border-width: medium;
+  border-radius: 0;
+  padding: .6rem 1.3rem;
+  font-size: 1.1rem;
+}
+
+/* ===============end welcome section====================== */
+
+
 /* ===============cards home page====================== */
 .card,
 .card-header,
 .card-body,
 .card-footer {
-  background: #525f7f !important;
+  background: #fff !important;
 }
 
 .card {
-  border: 1px solid #03bfcb;
-  color: #fff !important;
+  /* border: 1px solid #03bfcb; */
+  color: #050833 !important;
 }
 
 .card-header {
@@ -75,7 +137,8 @@ ul.navbar-nav a.nav-item.nav-link {
 }
 
 .post-user-btn {
-  margin-left: 20px;
+  margin-left: 1px;
+  margin-top: 4px;
 }
 
 .card-header .post-data {
@@ -87,7 +150,7 @@ ul.navbar-nav a.nav-item.nav-link {
   text-transform: capitalize;
   margin-left: 4px;
   padding-right: 4px;
-  color: floralwhite;
+  color: #e14eca;
 }
 
 .post-data h5.card-title > a:hover {
@@ -104,7 +167,7 @@ ul.navbar-nav a.nav-item.nav-link {
 }
 
 .post-title a {
-  color: #000 !important;
+  color: #e14eca !important;
   text-transform: capitalize;
   font-size: 23px;
   line-height: 28px;
@@ -112,7 +175,7 @@ ul.navbar-nav a.nav-item.nav-link {
 }
 
 .card-body h5 > a {
-  color: floralwhite;
+  color: #e14eca !important;
 }
 
 .card-body h5 > a:hover {
@@ -121,14 +184,6 @@ ul.navbar-nav a.nav-item.nav-link {
 }
 
 
-.insta-btns a {
-  display: inline-block;
-  margin: 0 12px;
-}
-
-.insta-btns a > i.fa {
-  color: #333;
-}
 
 /* =================profile========================= */
 
